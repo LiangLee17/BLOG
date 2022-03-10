@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>关于我</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+        <link rel="stylesheet" href="./static/css/me.css">
+    </head>
+
+    <body>
+
+
+        <!--导航--> 
+        <nav class="ui inverted attached segment m-padded-tb-mini">
+
+            <div class="ui container">
+                <div class="ui inverted secondary stackable menu">
+                    <h2 class="ui olive header item">Blog</h2>
+                    <a href="#" class="m-item item m-mobile-hide"><i class="middle home icon"></i>首页</a>
+                    <a href="#" class="m-item item m-mobile-hide"><i class="middle idea icon"></i>分类</a>
+                    <a href="#" class="m-item item m-mobile-hide"><i class="middle tags icon"></i>标签</a>
+                    <a href="#" class="m-item item m-mobile-hide"><i class="middle clone icon"></i>归档</a>
+                    <a href="#" class="active m-item item m-mobile-hide"><i class="middle info icon"></i>关于我</i></a>
+                    <div class="right item m-mobile-hide">
+                        <div class="ui icon input">
+                            <input type="text" placeholder="Search...">
+                            <i class="search link icon"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="#" class="ui menu toggle black icon button m-right-top m-mobile-show">
+                <i class="sidebar icon"></i>
+            </a>
+        </nav>
+
+
+        <!--中间内容-->
+        <div class="m-container-large m-padded-tb-big">
+            <div class="ui container">
+                <div class="ui stackable grid">
+                    <dic class="eleven wide column">
+                        <div class="ui segment">
+                            <img src="https://picsum.photos/seed/picsum/800/600" class="ui rounded image">
+                        </div>
+                        
+                    </dic>
+                    <div class="five wide column">
+                        <div class="ui top attached segment">
+                            <div class="ui header">关于我</div>
+                        </div>
+                        <div class="ui teal attached segment">
+                            <p class="m-text">李亮，数学与计算机</p>
+                            <p class="m-text">李亮，数学与计算机</p>
+                        </div>
+                        <div class="ui attached segment">
+                            <div class="ui red basic label">编程</div>
+                            <div class="ui red basic label">数学</div>
+                            <div class="ui red basic label">游戏</div>
+                            <div class="ui red basic label">偏微分方程</div>
+                        </div>
+                        <div class="ui attached segment">
+                            <div class="ui teal basic label">Java</div>
+                            <div class="ui teal basic label">后端</div>
+                            <div class="ui teal basic label">MYSQL</div>
+                            <div class="ui teal basic label">偏微分方程</div>
+                        </div>
+                        <div class="ui bottom attached segment">
+                            <a href="#" class="ui github circular icon button" data-content="lianglee17" data-position="bottom center"><i class="black github icon"></i></a>
+                            <a href="#" class="ui weixin circular icon button" data-content="Eternity_ll7" data-position="bottom center"><i class="green weixin icon"></i></a>
+                            <a href="#" class="ui qq circular icon button"  data-content="lianglee17@qq.com" data-position="bottom center"><i class="blue qq icon"></i></a>
+                        </div>
+
+                        <div class="ui center aligned basic segment">
+                            <button id="payButton" class="ui red basic circular button">赞赏</button>
+                       </div>
+                       <div class="ui payQR flowing popup transition hidden">
+                           <div class="ui red basic label">
+                               <div class="ui images" style="font-size: inherit !important">
+                                   <div class="image">
+                                       <img src="./static/image/pay.JPG" alt="" class="ui rounded bordered image" style="width: 120px">
+                                       <div>微信</div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+
+        <!--底部元素-->
+        <footer class="ui inverted vertical segment m-padded-tb-massive">
+            <div class="ui center aligned container">
+                <div class="ui inverted divided stackable grid">
+                    <div class = "three wide column">
+                        <div class="ui inverted link list">
+                            <div class="item">
+                             <img src="./static/image/WeChat.PNG" class="ui rounded image" alt="" style="width: 117px">
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class = "three wide column">
+                        <h4 class="ui inverted header m-opacity-mini">最新博客</h4>
+                        <div class="ui inverted link list">
+                            <a href="#" class="item">测试ing</a>
+                            <a href="#" class="item">测试ing</a>
+                            <a href="#" class="item">测试ing</a>
+                        </div>
+                    </div>
+                    <div class = "three wide column">
+                        <h4 class="ui inverted header m-opacity-mini">联系我</h4>
+                        <div class="ui inverted link list">
+                            <a href="#" class="item">邮箱: lianglee17@qq.com</a>
+                            <a href="#" class="item">地址：浙江大学玉泉校区</a>
+                        </div>
+                    </div>
+                    <div class = "seven wide column">
+                        <h4 class="ui inverted header m-opacity-mini">Liang</h4>
+                        <p class="m-text-thin m-text-spaced m-opacity-mini">还在建设中....</p> 
+                    </div>
+                </div>
+                <div>
+                    <div class="ui inverted section divider"></div>
+                    <p class="m-text-thin m-font-spacing m-opacity-small">Copyright ©2022-2023 Liang Designed by Liang</p>
+                </div>    
+            </div>
+        </footer>
+
+
+        <script src = "https:/cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+        <script>
+            $('.menu.toggle').click(function(){
+                $('.m-item').toggleClass('m-mobile-hide');
+            });
+            $('.qq').popup();
+            $('.weixin').popup();
+            $('.github').popup();
+            $('#payButton').popup({
+                popup : $('.payQR.popup'),
+                on : 'click',
+                position: 'bottom center'
+            });
+        </script>
+    </body>
+</html>
