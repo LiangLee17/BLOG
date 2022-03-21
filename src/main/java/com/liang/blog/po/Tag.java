@@ -8,14 +8,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "t_tag")
 public class Tag {
-    
+
     @Id
     @GeneratedValue
     private Long id;
+
+    @NotEmpty(message = "标签名称不能为空")
     private String name;
 
     @ManyToMany(mappedBy = "tags")
@@ -53,5 +56,5 @@ public class Tag {
         this.blogs = blogs;
     }
 
-    
+
 }

@@ -54,7 +54,7 @@ public class TypeController {
         Type type1 = typeService.getTypeByName(type.getName());
 
         if (type1 != null) {
-            result.rejectValue("name","nameError","Type already exists");
+            result.rejectValue("name","nameError","该分类已存在");
         }
         if (result.hasErrors()) {
             return "admin/types-input";
