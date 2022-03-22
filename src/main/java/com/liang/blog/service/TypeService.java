@@ -1,5 +1,7 @@
 package com.liang.blog.service;
 
+import java.util.List;
+
 import com.liang.blog.po.Type;
 
 import org.springframework.data.domain.Pageable;
@@ -12,6 +14,8 @@ public interface TypeService {
     Type getType(Long id);
 
     Page<Type> listType(Pageable pageable);
+
+    List<Type> listType();
 
     Type updateType(Long id, Type type);
 

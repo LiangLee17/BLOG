@@ -1,5 +1,8 @@
 package com.liang.blog.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.liang.blog.NotFoundException;
 import com.liang.blog.dao.TagRepository;
 import com.liang.blog.po.Tag;
@@ -57,5 +60,28 @@ public class TagServiceImpl implements TagService {
     public Tag getTagByName(String name) {
         return tagRepository.findByName(name);
     }
+
+    @Override
+    public List<Tag> listTag() {
+        return tagRepository.findAll();
+    }
+
+    @Override
+    public List<Tag> listTag(String ids) {
+        return tagRepository.findAllById(convertToList(ids));
+    }
+
+    private List<Long> convertToList(String ids) {
+        List<Long> list = new ArrayList<>();
+        if (ids != null && !ids.equals("")) {
+            String[] idarray = ids.split(",");
+            for (int i=0; i < idarray.length; i++) {
+                list.add(Long.valueOf(idarray[i]));
+            }
+        }
+        return list;
+    }
+
+
 
 }

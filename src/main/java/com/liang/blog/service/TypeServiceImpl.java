@@ -1,5 +1,7 @@
 package com.liang.blog.service;
 
+import java.util.List;
+
 import com.liang.blog.NotFoundException;
 import com.liang.blog.dao.TypeRepository;
 import com.liang.blog.po.Type;
@@ -41,6 +43,11 @@ public class TypeServiceImpl implements TypeService {
         return typeRepository.save(type);
     }
 
+    @Override
+    public List<Type> listType() {
+        return typeRepository.findAll();
+    }
+
     @Transactional
     @Override
     public Type updateType(Long id, Type type) {
@@ -57,5 +64,7 @@ public class TypeServiceImpl implements TypeService {
     public Type getTypeByName(String name) {
         return typeRepository.findByName(name);
     }
+
+
 
 }
