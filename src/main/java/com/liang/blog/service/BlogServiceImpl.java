@@ -4,6 +4,7 @@ import com.liang.blog.NotFoundException;
 import com.liang.blog.dao.BlogRepository;
 import com.liang.blog.po.Blog;
 import com.liang.blog.po.Type;
+import com.liang.blog.util.MarkdownUtils;
 import com.liang.blog.util.MyBeanUtils;
 import com.liang.blog.vo.BlogQuery;
 
@@ -59,6 +60,27 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public Page<Blog> listBlog(Pageable pageable) {
         return blogRepository.findAll(pageable);
+    }
+
+
+
+    @Override
+    public Blog getAndConvert(Long id) {
+        Blog blog = blogRepository.getBlogById(id);
+        if (blog == null) {
+            throw new NotFoundException("博客不存在");
+        }
+        Blog b = new Blog();
+        BeanUtils.copyProperties(blog, b);
+        String content = b.getContent();
+        b.setContent(MarkdownUtils.markdownToHtmlExtensions(content));
+        blogRepository.updateViews(id);
+        return b;
+    }
+
+    @Override
+    public Page<Blog> listBlog(String query, Pageable pageable) {
+        return blogRepository.findByQuery(query, pageable);
     }
 
     @Override

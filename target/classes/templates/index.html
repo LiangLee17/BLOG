@@ -24,21 +24,23 @@
                 <a href="#" class="m-item item m-mobile-hide"><i class="middle clone icon"></i>归档</a>
                 <a href="#" class="m-item item m-mobile-hide"><i class="middle info icon"></i>关于我</i></a>
                 <div class="right item m-mobile-hide">
-                    <div class="ui icon input">
-                        <input type="text" placeholder="Search...">
-                        <i class="search link icon"></i>
-                    </div>
+                    <form name="search" action="#" th:action="@{/search}" method="post" target="_blank" th:value="${query}">
+                        <div class="ui icon input">
+                            <input type="text" name="query" placeholder="Search...">
+                            <i onclick="document.forms['search'].submit()" class="search link icon"></i>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-        <a href="#" class="ui menu toggle black icon button m-right-top m-mobile-show">
-            <i class="sidebar icon"></i>
+        <a href="# " class="ui menu toggle black icon button m-right-top m-mobile-show">
+            <i class="sidebar icon "></i>
         </a>
     </nav>
 
 
     <!--中间内容-->
-    <div class="m-padded-tb-large">
+    <div class="m-padded-tb-large ">
         <div class="ui container">
             <div class="ui grid">
                 <!--博客左边列表-->
@@ -46,7 +48,7 @@
                     <!--header-->
                     <div class="ui top attached segment">
                         <div class="ui middle aligned two column grid">
-                            <div class="column">
+                            <div class="column ">
                                 <h3 class="ui teal header">博客</h3>
                             </div>
                             <div class="column right aligned">
@@ -57,188 +59,188 @@
                     </div>
 
                     <!--content-->
-                    <div class="ui attached segment">
-                        <div class="ui padded vertical segment m-padded-tb-large" th:each="blog : ${page.content}">
-                            <div class="ui middle aligned mobile reversed stackable grid">
+                    <div class="ui attached segment ">
+                        <div class="ui padded vertical segment m-padded-tb-large " th:each="blog : ${page.content} ">
+                            <div class="ui middle aligned mobile reversed stackable grid ">
                                 <div class="ui eleven wide column ">
-                                    <h3 class="ui header"><a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="m-black" th:text="${blog.title}">前端什么的太麻烦了</a></h3>
-                                    <p class="m-text" th:text="|${blog.description}......|">前端什么的真的麻烦，好多小细节，还要到处记东西，技术性的东西有没有，烦死了，烦死了</p>
-                                    <div class="ui stackabel grid">
-                                        <div class="eleven wide column">
-                                            <div class="ui horizontal link list">
-                                                <div class="item">
-                                                    <img src="../static/image/chara.jpg" th:src="@{${blog.user.avatar}}" alt="" class="ui avatar image">
-                                                    <div class="content">
-                                                        <a href="#" class="header" th:text="${blog.user.nickname}">李亮</a>
+                                    <h3 class="ui header "><a href="# " th:href="@{/blog/{id}(id=${blog.id})} " target="_blank " class="m-black " th:text="${blog.title} ">前端什么的太麻烦了</a></h3>
+                                    <p class="m-text " th:text="|${blog.description}......| ">前端什么的真的麻烦，好多小细节，还要到处记东西，技术性的东西有没有，烦死了，烦死了</p>
+                                    <div class="ui stackabel grid ">
+                                        <div class="eleven wide column ">
+                                            <div class="ui horizontal link list ">
+                                                <div class="item ">
+                                                    <img src="../static/image/chara.jpg" th:src="@{${blog.user.avatar}}" alt=" " class="ui avatar image ">
+                                                    <div class="content ">
+                                                        <a href="# " class="header " th:text="${blog.user.nickname}">李亮</a>
                                                     </div>
                                                 </div>
-                                                <div class="item">
-                                                    <i class="calendar icon"></i><span th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd')}">2022-03-06</span>
+                                                <div class="item ">
+                                                    <i class="calendar icon"></i><span th:text="${#dates.format(blog.updateTime, 'yyyy-MM-dd')}">2022-03-06</span>
                                                 </div>
-                                                <div class="item">
-                                                    <i class="eye icon"></i> <span th:text="${blog.views}">1117</span>
+                                                <div class="item ">
+                                                    <i class="eye icon "></i> <span th:text="${blog.views}">1117</span>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="right aligned five wide column">
-                                            <a href="#" target="_blank" class="ui teal basic label m-padded-tiny" th:text="${blog.type.name}">前端</a>
+                                            <a href="#" target="_blank" class="ui teal basic label m-padded-tiny" th:text="${blog.type.name} ">前端</a>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="ui five wide column">
-                                    <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank">
-                                        <img src="https://picsum.photos/seed/picsum/800/450" th:src="@{${blog.firstPicture}}" alt="" class="ui round image">
+                                <div class="ui five wide column ">
+                                    <a href="# " th:href="@{/blog/{id}(id=${blog.id})} " target="_blank ">
+                                        <img src="https://picsum.photos/seed/picsum/800/450" th:src="@{${blog.firstPicture}}" alt=" " class="ui round image ">
                                     </a>
                                 </div>
                             </div>
                         </div>
 
                         <!--/*-->
-                        <div class="ui padded vertical segment m-padded-tb-large">
-                            <div class="ui mobile reversed stackable grid">
+                        <div class="ui padded vertical segment m-padded-tb-large ">
+                            <div class="ui mobile reversed stackable grid ">
                                 <div class="ui eleven wide column ">
-                                    <h3 class="ui header">前端什么的太麻烦了</h3>
+                                    <h3 class="ui header ">前端什么的太麻烦了</h3>
                                     <p>前端什么的真的麻烦，好多小细节，还要到处记东西，技术性的东西有没有，烦死了，烦死了</p>
-                                    <div class="ui stackabel grid">
-                                        <div class="eleven wide column">
-                                            <div class="ui horizontal link list">
-                                                <div class="item">
-                                                    <img src="../static/image/chara.jpg" alt="" class="ui avatar image">
-                                                    <div class="content">
-                                                        <a href="#" class="header">李亮</a>
+                                    <div class="ui stackabel grid ">
+                                        <div class="eleven wide column ">
+                                            <div class="ui horizontal link list ">
+                                                <div class="item ">
+                                                    <img src="../static/image/chara.jpg " alt=" " class="ui avatar image ">
+                                                    <div class="content ">
+                                                        <a href="# " class="header ">李亮</a>
                                                     </div>
                                                 </div>
-                                                <div class="item">
-                                                    <i class="calendar icon"></i> 2022-03-06
+                                                <div class="item ">
+                                                    <i class="calendar icon "></i> 2022-03-06
                                                 </div>
-                                                <div class="item">
-                                                    <i class="eye icon"></i> 1117
+                                                <div class="item ">
+                                                    <i class="eye icon "></i> 1117
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <div class="right aligned five wide column">
-                                            <a href="#" target="_blank" class="ui teal basic label m-padded-tiny">前端</a>
+                                        <div class="right aligned five wide column ">
+                                            <a href="# " target="_blank " class="ui teal basic label m-padded-tiny ">前端</a>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="ui five wide column">
-                                    <a href="#" target="_blank">
-                                        <img src="https://picsum.photos/seed/picsum/800/450" alt="" class="ui round image">
+                                <div class="ui five wide column ">
+                                    <a href="# " target="_blank ">
+                                        <img src="https://picsum.photos/seed/picsum/800/450 " alt=" " class="ui round image ">
                                     </a>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="ui padded vertical segment m-padded-tb-large">
-                            <div class="ui mobile reversed stackable grid">
+                        <div class="ui padded vertical segment m-padded-tb-large ">
+                            <div class="ui mobile reversed stackable grid ">
                                 <div class="ui eleven wide column ">
-                                    <h3 class="ui header">前端什么的太麻烦了</h3>
+                                    <h3 class="ui header ">前端什么的太麻烦了</h3>
                                     <p>前端什么的真的麻烦，好多小细节，还要到处记东西，技术性的东西有没有，烦死了，烦死了</p>
-                                    <div class="ui stackabel grid">
-                                        <div class="eleven wide column">
-                                            <div class="ui horizontal link list">
-                                                <div class="item">
-                                                    <img src="../static/image/chara.jpg" alt="" class="ui avatar image">
-                                                    <div class="content">
-                                                        <a href="#" class="header">李亮</a>
+                                    <div class="ui stackabel grid ">
+                                        <div class="eleven wide column ">
+                                            <div class="ui horizontal link list ">
+                                                <div class="item ">
+                                                    <img src="../static/image/chara.jpg " alt=" " class="ui avatar image ">
+                                                    <div class="content ">
+                                                        <a href="# " class="header ">李亮</a>
                                                     </div>
                                                 </div>
-                                                <div class="item">
-                                                    <i class="calendar icon"></i> 2022-03-06
+                                                <div class="item ">
+                                                    <i class="calendar icon "></i> 2022-03-06
                                                 </div>
-                                                <div class="item">
-                                                    <i class="eye icon"></i> 1117
+                                                <div class="item ">
+                                                    <i class="eye icon "></i> 1117
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <div class="right aligned five wide column">
-                                            <a href="#" target="_blank" class="ui teal basic label m-padded-tiny">前端</a>
+                                        <div class="right aligned five wide column ">
+                                            <a href="# " target="_blank " class="ui teal basic label m-padded-tiny ">前端</a>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="ui five wide column">
-                                    <a href="#" target="_blank">
-                                        <img src="https://picsum.photos/seed/picsum/800/450" alt="" class="ui round image">
+                                <div class="ui five wide column ">
+                                    <a href="# " target="_blank ">
+                                        <img src="https://picsum.photos/seed/picsum/800/450 " alt=" " class="ui round image ">
                                     </a>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="ui padded vertical segment m-padded-tb-large">
-                            <div class="ui mobile reversed stackable grid">
+                        <div class="ui padded vertical segment m-padded-tb-large ">
+                            <div class="ui mobile reversed stackable grid ">
                                 <div class="ui eleven wide column ">
-                                    <h3 class="ui header">前端什么的太麻烦了</h3>
+                                    <h3 class="ui header ">前端什么的太麻烦了</h3>
                                     <p>前端什么的真的麻烦，好多小细节，还要到处记东西，技术性的东西有没有，烦死了，烦死了</p>
-                                    <div class="ui stackabel grid">
-                                        <div class="eleven wide column">
-                                            <div class="ui horizontal link list">
-                                                <div class="item">
-                                                    <img src="../static/image/chara.jpg" alt="" class="ui avatar image">
-                                                    <div class="content">
-                                                        <a href="#" class="header">李亮</a>
+                                    <div class="ui stackabel grid ">
+                                        <div class="eleven wide column ">
+                                            <div class="ui horizontal link list ">
+                                                <div class="item ">
+                                                    <img src="../static/image/chara.jpg " alt=" " class="ui avatar image ">
+                                                    <div class="content ">
+                                                        <a href="# " class="header ">李亮</a>
                                                     </div>
                                                 </div>
-                                                <div class="item">
-                                                    <i class="calendar icon"></i> 2022-03-06
+                                                <div class="item ">
+                                                    <i class="calendar icon "></i> 2022-03-06
                                                 </div>
-                                                <div class="item">
-                                                    <i class="eye icon"></i> 1117
+                                                <div class="item ">
+                                                    <i class="eye icon "></i> 1117
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <div class="right aligned five wide column">
-                                            <a href="#" target="_blank" class="ui teal basic label m-padded-tiny">前端</a>
+                                        <div class="right aligned five wide column ">
+                                            <a href="# " target="_blank " class="ui teal basic label m-padded-tiny ">前端</a>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="ui five wide column">
-                                    <a href="#" target="_blank">
-                                        <img src="https://picsum.photos/seed/picsum/800/450" alt="" class="ui round image">
+                                <div class="ui five wide column ">
+                                    <a href="# " target="_blank ">
+                                        <img src="https://picsum.photos/seed/picsum/800/450 " alt=" " class="ui round image ">
                                     </a>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="ui padded vertical segment m-padded-tb-large">
-                            <div class="ui mobile reversed stackable grid">
+                        <div class="ui padded vertical segment m-padded-tb-large ">
+                            <div class="ui mobile reversed stackable grid ">
                                 <div class="ui eleven wide column ">
-                                    <h3 class="ui header">前端什么的太麻烦了</h3>
+                                    <h3 class="ui header ">前端什么的太麻烦了</h3>
                                     <p>前端什么的真的麻烦，好多小细节，还要到处记东西，技术性的东西有没有，烦死了，烦死了</p>
-                                    <div class="ui stackabel grid">
-                                        <div class="eleven wide column">
-                                            <div class="ui horizontal link list">
-                                                <div class="item">
-                                                    <img src="../static/image/chara.jpg" alt="" class="ui avatar image">
-                                                    <div class="content">
-                                                        <a href="#" class="header">李亮</a>
+                                    <div class="ui stackabel grid ">
+                                        <div class="eleven wide column ">
+                                            <div class="ui horizontal link list ">
+                                                <div class="item ">
+                                                    <img src="../static/image/chara.jpg " alt=" " class="ui avatar image ">
+                                                    <div class="content ">
+                                                        <a href="# " class="header ">李亮</a>
                                                     </div>
                                                 </div>
-                                                <div class="item">
-                                                    <i class="calendar icon"></i> 2022-03-06
+                                                <div class="item ">
+                                                    <i class="calendar icon "></i> 2022-03-06
                                                 </div>
-                                                <div class="item">
-                                                    <i class="eye icon"></i> 1117
+                                                <div class="item ">
+                                                    <i class="eye icon "></i> 1117
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <div class="right aligned five wide column">
-                                            <a href="#" target="_blank" class="ui teal basic label m-padded-tiny">前端</a>
+                                        <div class="right aligned five wide column ">
+                                            <a href="# " target="_blank " class="ui teal basic label m-padded-tiny ">前端</a>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="ui five wide column">
-                                    <a href="#" target="_blank">
-                                        <img src="https://picsum.photos/seed/picsum/800/450" alt="" class="ui round image">
+                                <div class="ui five wide column ">
+                                    <a href="# " target="_blank ">
+                                        <img src="https://picsum.photos/seed/picsum/800/450 " alt=" " class="ui round image ">
                                     </a>
                                 </div>
                             </div>
@@ -248,7 +250,7 @@
                     </div>
 
                     <!--bottem-->
-                    <div class="ui bottom attached segment" th:if="${page.totalPages}>1">
+                    <div class="ui bottom attached segment " th:if="${page.totalPages}>1">
                         <div class="ui middle aligned two column grid">
                             <div class="column">
                                 <a href="#" th:href="@{/(page=${page.number}-1)}" th:unless="${page.first}" class="ui teal basic button">上一页</a>
