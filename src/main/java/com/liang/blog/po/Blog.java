@@ -29,6 +29,7 @@ public class Blog {
     @GeneratedValue
     private Long id;
     private String title;
+    private String description;
 
     @Basic(fetch = FetchType.LAZY)
     @Lob
@@ -213,7 +214,15 @@ public class Blog {
         this.tagIds = tagsToIds(this.getTags());
     }
 
-     // convert tags list to string
+     public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    // convert tags list to string
      private String tagsToIds(List<Tag> tags) {
         if (!tags.isEmpty()) {
             StringBuffer ids = new StringBuffer();

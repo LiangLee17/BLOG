@@ -38,7 +38,7 @@ public class BlogController {
     private TagService tagService;
 
     @GetMapping("/blogs")
-    public String list(@PageableDefault(size = 2, sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable,
+    public String list(@PageableDefault(size = 8, sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable,
                        BlogQuery blog, Model model) {
         model.addAttribute("types", typeService.listType());
         model.addAttribute("page", blogService.listBlog(pageable, blog));
@@ -46,7 +46,7 @@ public class BlogController {
     }
 
     @PostMapping("/blogs/search")
-    public String search(@PageableDefault(size = 2, sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable,
+    public String search(@PageableDefault(size = 8, sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable,
                          BlogQuery blog, Model model) {
         model.addAttribute("page", blogService.listBlog(pageable, blog));
         return "admin/blogs :: bloglist";
@@ -79,8 +79,15 @@ public class BlogController {
         blog.setUser((User) session.getAttribute("user"));
         blog.setType(typeService.getType(blog.getType().getId()));
         blog.setTags(tagService.listTag(blog.getTagIds()));
+        Blog b;
+        if (blog.getId() == null) {
+            b = blogService.SaveBlog(blog);
+        }
+        else {
+            b = blogService.updateBlog(blog.getId(), blog);
+        }
 
-        Blog b = blogService.SaveBlog(blog);
+
         if(b == null) {
             attributes.addFlashAttribute("message", "操作失败");
         } else {
