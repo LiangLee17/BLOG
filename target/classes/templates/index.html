@@ -401,28 +401,32 @@
 
 
     <!--底部元素-->
-    <footer class="ui inverted vertical segment m-padded-tb-massive">
+    <footer th:replace="_fragments :: footer" class="ui inverted vertical segment m-padded-tb-massive">
         <div class="ui center aligned container">
             <div class="ui inverted divided stackable grid">
                 <div class="three wide column">
                     <div class="ui inverted link list">
                         <div class="item">
-                            <img src="../static/image/WeChat.PNG" class="ui rounded image" alt="" style="width: 117px">
+                            <img src="../static/image/WeChat.PNG" class="ui rounded image" alt="" style="width: 117px ">
                         </div>
                     </div>
 
                 </div>
                 <div class="three wide column">
                     <h4 class="ui inverted header m-opacity-mini">最新博客</h4>
-                    <div class="ui inverted link list">
-                        <a href="#" class="item">测试ing</a>
-                        <a href="#" class="item">测试ing</a>
-                        <a href="#" class="item">测试ing</a>
+                    <div id="newblog-container">
+                        <div class="ui inverted link list" th:fragment="newblogList">
+                            <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="item" th:each="blog : ${newblogs}" th:text="${blog.title}">测试ing</a>
+                            <!--/*-->
+                            <a href="#" class="item">测试ing</a>
+                            <a href="#" class="item">测试ing</a>
+                            <!--*/-->
+                        </div>
                     </div>
                 </div>
                 <div class="three wide column">
-                    <h4 class="ui inverted header m-opacity-mini">联系我</h4>
-                    <div class="ui inverted link list">
+                    <h4 class="ui inverted header m-opacity-mini ">联系我</h4>
+                    <div class="ui inverted link list ">
                         <a href="#" class="item">邮箱: lianglee17@qq.com</a>
                         <a href="#" class="item">地址：浙江大学玉泉校区</a>
                     </div>
@@ -446,6 +450,7 @@
         $('.menu.toggle').click(function() {
             $('.m-item').toggleClass('m-mobile-hide');
         });
+        $('#newblog-container').load( /*[[@{/footer/newblog}]]*/ "/footer/newblog");
     </script>
 </body>
 

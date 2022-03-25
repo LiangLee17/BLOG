@@ -25,8 +25,8 @@
                 <a href="#" th:href="@{/about}" class="m-item item m-mobile-hide"><i class="middle info icon"></i>关于我</i></a>
                 <div class="right item m-mobile-hide">
                     <form name="search" action="#" th:action="@{/search}" method="post" target="_blank" th:value="${query}">
-                        <div class=" ui icon input ">
-                            <input type="text " name="query " placeholder="Search...">
+                        <div class=" ui icon input">
+                            <input type="text" name="query" placeholder="Search...">
                             <i onclick="document.forms['search'].submit()" class="search link icon"></i>
                         </div>
                     </form>
@@ -123,7 +123,7 @@
 
 
     <!--底部元素-->
-    <footer class="ui inverted vertical segment m-padded-tb-massive">
+    <footer th:replace="_fragments :: footer" class="ui inverted vertical segment m-padded-tb-massive">
         <div class="ui center aligned container">
             <div class="ui inverted divided stackable grid">
                 <div class="three wide column">
@@ -168,6 +168,7 @@
         $('.menu.toggle').click(function() {
             $('.m-item').toggleClass('m-mobile-hide');
         });
+        $('#newblog-container').load( /*[[@{/footer/newblog}]]*/ "/footer/newblog");
     </script>
 </body>
 
