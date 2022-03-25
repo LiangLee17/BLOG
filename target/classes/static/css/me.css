@@ -33,9 +33,6 @@
     padding-bottom: 5em !important;
 }
 
-
-
-
 .m-padded-mini {
     padding: 0.2em !important;
 }
@@ -53,21 +50,22 @@
     padding-right: 4em !important;
 }
 
-
-.m-mobile-lr-clear{
+.m-mobile-lr-clear {
     padding-left: 4em !important;
     padding-right: 4em !important;
 }
 
+
 /*-----shadow----*/
+
 .m-shadow-small {
-    -webkit-box-shadow: 0 4px 8px rgba(0,0,0,0.2) !important;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2) !important;
+    -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
 }
 
 
-
 /*-------margin-------*/
+
 .m-margin-tb-tiny {
     margin-top: 0.3em !important;
     margin-bottom: 0.3em !important;
@@ -90,23 +88,16 @@
 }
 
 
-
-
-
-
-
-
-
-
-
 /*--------text-------*/
 
 .m-text-thin {
     font-weight: 300 !important;
 }
+
 .m-text-spaced {
     letter-spacing: 1px !important;
 }
+
 .m-text-lined {
     line-height: 1.8;
 }
@@ -120,9 +111,8 @@
 }
 
 
-
-
 /*--------display-------*/
+
 .m-inline-block {
     display: inline-block !important;
 }
@@ -139,11 +129,14 @@
 
 
 /*----background---*/
+
 body {
     background: url("../image/background.png");
 }
 
+
 /*----position----*/
+
 .m-right-top {
     position: absolute;
     top: 0;
@@ -162,15 +155,20 @@ body {
 
 
 /*------color-----*/
+
 .m-black {
     color: #333 !important;
+}
+
+.m-teal {
+    color: #00B5AD !important;
 }
 
 .m-mobile-show {
     display: none !important;
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 768px) {
     .m-mobile-hide {
         display: none !important;
     }
@@ -181,7 +179,7 @@ body {
         padding-left: 0 !important;
         padding-right: 0 !important;
     }
-    .m-mobile-lr-clear{
+    .m-mobile-lr-clear {
         padding-left: 0 !important;
         padding-right: 0 !important;
     }
@@ -189,4 +187,3 @@ body {
         width: 100% !important;
     }
 }
-

@@ -18,16 +18,16 @@
         <div class="ui container">
             <div class="ui inverted secondary stackable menu">
                 <h2 class="ui olive header item">Blog</h2>
-                <a href="#" class="m-item item m-mobile-hide"><i class="middle home icon"></i>首页</a>
-                <a href="#" class="m-item item m-mobile-hide"><i class="middle idea icon"></i>分类</a>
-                <a href="#" class="m-item item m-mobile-hide"><i class="middle tags icon"></i>标签</a>
-                <a href="#" class="m-item item m-mobile-hide"><i class="middle clone icon"></i>归档</a>
-                <a href="#" class="m-item item m-mobile-hide"><i class="middle info icon"></i>关于我</i></a>
+                <a href="#" th:href="@{/}" class="m-item item m-mobile-hide"><i class="middle home icon"></i>首页</a>
+                <a href="#" th:href="@{/types/-1}" class="m-item item m-mobile-hide"><i class="middle idea icon"></i>分类</a>
+                <a href="#" th:href="@{/tags/-1}" class="m-item item m-mobile-hide"><i class="middle tags icon"></i>标签</a>
+                <a href="#" th:href="@{/archives}" class="m-item item m-mobile-hide active"><i class="middle clone icon"></i>归档</a>
+                <a href="#" th:href="@{/about}" class="m-item item m-mobile-hide"><i class="middle info icon"></i>关于我</i></a>
                 <div class="right item m-mobile-hide">
                     <form name="search" action="#" th:action="@{/search}" method="post" target="_blank" th:value="${query}">
                         <div class=" ui icon input ">
-                            <input type="text " name="query " placeholder="Search... ">
-                            <i onclick="document.forms[ 'search'].submit() " class="search link icon "></i>
+                            <input type="text " name="query" placeholder="Search...">
+                            <i onclick="document.forms[ 'search'].submit() " class="search link icon"></i>
                         </div>
                     </form>
                 </div>
@@ -49,83 +49,24 @@
                     </div>
                     <div class="column right aligned ">
                         共
-                        <h2 class="ui red header m-inline-block ">17</h2>篇博客
+                        <h2 class="ui red header m-inline-block" th:text="${blogCount}">17</h2>篇博客
                     </div>
                 </div>
             </div>
 
-            <h2 class="ui center aligned header ">2022</h2>
-            <div class="ui fluid vertical menu ">
-                <a href="# " target="_blank " class="item ">
-                    <span>
-                            <i class="small teal circle icon "></i>线性代数方法论
-                            <div class="ui teal basic label m-padded-mini m-text-thin ">3月8日</div>
+            <th:block th:each="item : ${archiveMap}">
+                <h2 class="ui center aligned header" th:text="${item.key}">2022</h2>
+                <div class="ui fluid vertical menu ">
+                    <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="item" th:each="blog : ${item.value}">
+                        <span>
+                            <i class="small teal circle icon "></i><span th:text="${blog.title}">线性代数方法论</span>
+                        <div class="ui teal basic label m-padded-mini m-text-thin" th:text="${#dates.format(blog.updateTime,'MMMdd')}">3月8日</div>
                         </span>
 
-                    <div class="ui red basic label m-padded-mini m-text-thin ">转载</div>
-                </a>
-                <a href="# " target="_blank " class="item ">
-                    <span>
-                            <i class="small teal circle icon "></i>线性代数方法论
-                            <div class="ui teal basic label m-padded-mini m-text-thin ">3月8日</div>
-                        </span>
-
-                    <div class="ui red basic label m-padded-mini m-text-thin ">转载</div>
-                </a>
-                <a href="# " target="_blank " class="item ">
-                    <span>
-                            <i class="small teal circle icon "></i>线性代数方法论
-                            <div class="ui teal basic label m-padded-mini m-text-thin ">3月8日</div>
-                        </span>
-
-                    <div class="ui red basic label m-padded-mini m-text-thin ">转载</div>
-                </a>
-                <a href="# " target="_blank " class="item ">
-                    <span>
-                            <i class="small teal circle icon "></i>线性代数方法论
-                            <div class="ui teal basic label m-padded-mini m-text-thin ">3月8日</div>
-                        </span>
-
-                    <div class="ui red basic label m-padded-mini m-text-thin ">转载</div>
-                </a>
-            </div>
-
-            <h2 class="ui center aligned header ">2021</h2>
-            <div class="ui fluid vertical menu ">
-                <a href="# " target="_blank " class="item ">
-                    <span>
-                            <i class="small teal circle icon "></i>线性代数方法论
-                            <div class="ui teal basic label m-padded-mini m-text-thin ">3月8日</div>
-                        </span>
-
-                    <div class="ui red basic label m-padded-mini m-text-thin ">转载</div>
-                </a>
-                <a href="# " target="_blank " class="item ">
-                    <span>
-                            <i class="small teal circle icon "></i>线性代数方法论
-                            <div class="ui teal basic label m-padded-mini m-text-thin ">3月8日</div>
-                        </span>
-
-                    <div class="ui red basic label m-padded-mini m-text-thin ">转载</div>
-                </a>
-                <a href="# " target="_blank " class="item ">
-                    <span>
-                            <i class="small teal circle icon "></i>线性代数方法论
-                            <div class="ui teal basic label m-padded-mini m-text-thin ">3月8日</div>
-                        </span>
-
-                    <div class="ui red basic label m-padded-mini m-text-thin ">转载</div>
-                </a>
-                <a href="# " target="_blank " class="item ">
-                    <span>
-                            <i class="small teal circle icon "></i>线性代数方法论
-                            <div class="ui teal basic label m-padded-mini m-text-thin ">3月8日</div>
-                        </span>
-
-                    <div class="ui red basic label m-padded-mini m-text-thin ">转载</div>
-                </a>
-            </div>
-
+                        <div class="ui red basic label m-padded-mini m-text-thin" th:text="${blog.flag}">转载</div>
+                    </a>
+                </div>
+            </th:block>
 
         </div>
     </div>

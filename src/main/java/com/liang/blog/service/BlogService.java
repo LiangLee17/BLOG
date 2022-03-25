@@ -1,6 +1,7 @@
 package com.liang.blog.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.liang.blog.po.Blog;
 import com.liang.blog.vo.BlogQuery;
@@ -18,7 +19,13 @@ public interface BlogService {
 
     Page<Blog> listBlog(String query, Pageable pageable);
 
+    Page<Blog> listBlog(Long tagId, Pageable pageable);
+
     List<Blog> listRecommendBlogTop(Integer size);
+
+    Map<String,List<Blog>> archiveBlog();
+
+    Long countBlog();
 
     Blog getAndConvert(Long id);
 

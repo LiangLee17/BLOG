@@ -18,11 +18,11 @@
         <div class="ui container">
             <div class="ui inverted secondary stackable menu">
                 <h2 class="ui olive header item">Blog</h2>
-                <a href="#" class="m-item item m-mobile-hide"><i class="middle home icon"></i>首页</a>
-                <a href="#" class="m-item item m-mobile-hide"><i class="middle idea icon"></i>分类</a>
-                <a href="#" class="m-item item m-mobile-hide"><i class="middle tags icon"></i>标签</a>
-                <a href="#" class="m-item item m-mobile-hide"><i class="middle clone icon"></i>归档</a>
-                <a href="#" class="m-item item m-mobile-hide"><i class="middle info icon"></i>关于我</i></a>
+                <a href="#" th:href="@{/}" class="m-item item m-mobile-hide"><i class="middle home icon"></i>首页</a>
+                <a href="#" th:href="@{/types/-1}" class="m-item item m-mobile-hide active"><i class="middle idea icon"></i>分类</a>
+                <a href="#" th:href="@{/tags/-1}" class="m-item item m-mobile-hide"><i class="middle tags icon"></i>标签</a>
+                <a href="#" th:href="@{/archives}" class="m-item item m-mobile-hide"><i class="middle clone icon"></i>归档</a>
+                <a href="#" th:href="@{/about}" class="m-item item m-mobile-hide"><i class="middle info icon"></i>关于我</i></a>
                 <div class="right item m-mobile-hide">
                     <form name="search" action="#" th:action="@{/search}" method="post" target="_blank" th:value="${query}">
                         <div class=" ui icon input ">
@@ -47,163 +47,63 @@
                     <div class="column ">
                         <h3 class="ui teal header ">分类</h3>
                     </div>
-                    <div class="column right aligned ">
+                    <div class="column right aligned">
                         共
-                        <h2 class="ui red header m-inline-block ">17</h2>个
+                        <h2 class="ui red header m-inline-block" th:text="${#arrays.length(types)}">17</h2>个
                     </div>
                 </div>
             </div>
-            <div class="ui attached segment m-padded-tb-large ">
-                <div class="ui labeled button m-margin-tb-tiny ">
-                    <a href="# " class="ui teal basic button ">计算机科学</a>
-                    <div class="ui teal label ">24</div>
-                </div>
-                <div class="ui labeled button m-margin-tb-tiny ">
-                    <a href="# " class="ui basic button ">计算机科学</a>
-                    <div class="ui label ">24</div>
-                </div>
-                <div class="ui labeled button m-margin-tb-tiny ">
-                    <a href="# " class="ui basic button ">科学</a>
-                    <div class="ui label ">24</div>
-                </div>
-                <div class="ui labeled button m-margin-tb-tiny ">
-                    <a href="# " class="ui basic button ">数学</a>
-                    <div class="ui label ">24</div>
-                </div>
-                <div class="ui labeled button m-margin-tb-tiny ">
-                    <a href="# " class="ui basic button ">原神</a>
-                    <div class="ui label ">24</div>
-                </div>
-                <div class="ui labeled button m-margin-tb-tiny ">
-                    <a href="# " class="ui basic button ">计算机科学</a>
-                    <div class="ui label ">24</div>
-                </div>
-                <div class="ui labeled button m-margin-tb-tiny ">
-                    <a href="# " class="ui basic button ">计算机科学</a>
-                    <div class="ui label ">24</div>
-                </div>
-                <div class="ui labeled button m-margin-tb-tiny ">
-                    <a href="# " class="ui basic button ">计算机科学</a>
-                    <div class="ui label ">24</div>
+            <div class="ui attached segment m-padded-tb-large">
+                <div class="ui labeled button m-margin-tb-tiny" th:each="type : ${types}">
+                    <a href="#" th:href="@{/types/{id}(id=${type.id})}" class="ui basic button" th:classappend="${type.id==activeTypeId} ? 'teal' " th:text="${type.name}">计算机科学</a>
+                    <div class="ui label" th:classappend="${type.id==activeTypeId} ? 'teal' " th:text="${#arrays.length(type.blogs)}">24</div>
                 </div>
             </div>
             <div class="ui top attached teal segment ">
-                <div class="ui padded vertical segment m-padded-tb-large m-mobile-lr-clear ">
-                    <div class="ui mobile reversed stackable grid ">
+                <div class="ui padded vertical segment m-padded-tb-large" th:each="blog : ${page.content}">
+                    <div class="ui middle aligned mobile reversed stackable grid">
                         <div class="ui eleven wide column ">
-                            <h3 class="ui header ">前端什么的太麻烦了</h3>
-                            <p>前端什么的真的麻烦，好多小细节，还要到处记东西，技术性的东西有没有，烦死了，烦死了</p>
-                            <div class="ui stackabel grid ">
-                                <div class="eleven wide column ">
-                                    <div class="ui horizontal link list ">
-                                        <div class="item ">
-                                            <img src="../static/image/chara.jpg " alt=" " class="ui avatar image ">
-                                            <div class="content ">
-                                                <a href="# " class="header ">李亮</a>
+                            <h3 class="ui header"><a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="m-black" th:text="${blog.title}">前端什么的太麻烦了</a></h3>
+                            <p class="m-text" th:text="|${blog.description}......|">前端什么的真的麻烦，好多小细节，还要到处记东西，技术性的东西有没有，烦死了，烦死了</p>
+                            <div class="ui stackabel grid">
+                                <div class="eleven wide column">
+                                    <div class="ui horizontal link list">
+                                        <div class="item">
+                                            <img src="../static/image/chara.jpg" th:src="@{${blog.user.avatar}}" alt="" class="ui avatar image">
+                                            <div class="content">
+                                                <a href="#" class="header" th:text="${blog.user.nickname}">李亮</a>
                                             </div>
                                         </div>
-                                        <div class="item ">
-                                            <i class="calendar icon "></i> 2022-03-06
+                                        <div class="item">
+                                            <i class="calendar icon"></i><span th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd')}">2022-03-06</span>
                                         </div>
-                                        <div class="item ">
-                                            <i class="eye icon "></i> 1117
+                                        <div class="item">
+                                            <i class="eye icon"></i> <span th:text="${blog.views}">1117</span>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="right aligned five wide column ">
-                                    <a href="# " target="_blank " class="ui teal basic label m-padded-tiny ">前端</a>
+                                <div class="right aligned five wide column">
+                                    <a href="#" target="_blank" class="ui teal basic label m-padded-tiny" th:text="${blog.type.name}">前端</a>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="ui five wide column ">
-                            <a href="# " target="_blank ">
-                                <img src="https://picsum.photos/seed/picsum/800/450 " alt=" " class="ui round image ">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="ui padded vertical segment m-padded-tb-large m-mobile-lr-clear ">
-                    <div class="ui mobile reversed stackable grid ">
-                        <div class="ui eleven wide column ">
-                            <h3 class="ui header ">前端什么的太麻烦了</h3>
-                            <p>前端什么的真的麻烦，好多小细节，还要到处记东西，技术性的东西有没有，烦死了，烦死了</p>
-                            <div class="ui stackabel grid ">
-                                <div class="eleven wide column ">
-                                    <div class="ui horizontal link list ">
-                                        <div class="item ">
-                                            <img src="../static/image/chara.jpg " alt=" " class="ui avatar image ">
-                                            <div class="content ">
-                                                <a href="# " class="header ">李亮</a>
-                                            </div>
-                                        </div>
-                                        <div class="item ">
-                                            <i class="calendar icon "></i> 2022-03-06
-                                        </div>
-                                        <div class="item ">
-                                            <i class="eye icon "></i> 1117
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="right aligned five wide column ">
-                                    <a href="# " target="_blank " class="ui teal basic label m-padded-tiny ">前端</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="ui five wide column ">
-                            <a href="# " target="_blank ">
-                                <img src="https://picsum.photos/seed/picsum/800/450 " alt=" " class="ui round image ">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="ui padded vertical segment m-padded-tb-large m-mobile-lr-clear ">
-                    <div class="ui mobile reversed stackable grid ">
-                        <div class="ui eleven wide column ">
-                            <h3 class="ui header ">前端什么的太麻烦了</h3>
-                            <p>前端什么的真的麻烦，好多小细节，还要到处记东西，技术性的东西有没有，烦死了，烦死了</p>
-                            <div class="ui stackabel grid ">
-                                <div class="eleven wide column ">
-                                    <div class="ui horizontal link list ">
-                                        <div class="item ">
-                                            <img src="../static/image/chara.jpg " alt=" " class="ui avatar image ">
-                                            <div class="content ">
-                                                <a href="# " class="header ">李亮</a>
-                                            </div>
-                                        </div>
-                                        <div class="item ">
-                                            <i class="calendar icon "></i> 2022-03-06
-                                        </div>
-                                        <div class="item ">
-                                            <i class="eye icon "></i> 1117
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="right aligned five wide column ">
-                                    <a href="# " target="_blank " class="ui teal basic label m-padded-tiny ">前端</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="ui five wide column ">
-                            <a href="# " target="_blank ">
-                                <img src="https://picsum.photos/seed/picsum/800/450 " alt=" " class="ui round image ">
+                        <div class="ui five wide column">
+                            <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank">
+                                <img src="https://picsum.photos/seed/picsum/800/450" th:src="@{${blog.firstPicture}}" alt="" class="ui round image">
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="ui bottom attached segment ">
-                <div class="ui middle aligned two column grid ">
-                    <div class="column ">
-                        <a href="# " class="ui teal basic button ">上一页</a>
+            <div class="ui bottom attached segment" th:if="${page.totalPages}>1">
+                <div class="ui middle aligned two column grid">
+                    <div class="column">
+                        <a href="#" th:href="@{/types/{id}?page={page}(id=${activeTypeId},page=${page.number}-1)}" th:unless="${page.first}" class="ui teal basic button">上一页</a>
                     </div>
-                    <div class="column right aligned ">
-                        <a href="# " class="ui teal basic button ">下一页</a>
+                    <div class="column right aligned">
+                        <a href="#" th:href="@{/types/{id}?page={page}(id=${activeTypeId},page=${page.number}+1)}" th:unless="${page.last}" class="ui teal basic button">下一页</a>
                     </div>
                 </div>
             </div>
@@ -231,28 +131,28 @@
                         <a href="# " class="item ">测试ing</a>
                     </div>
                 </div>
-                <div class="three wide column ">
-                    <h4 class="ui inverted header m-opacity-mini ">联系我</h4>
-                    <div class="ui inverted link list ">
-                        <a href="# " class="item ">邮箱: lianglee17@qq.com</a>
-                        <a href="# " class="item ">地址：浙江大学玉泉校区</a>
+                <div class="three wide column">
+                    <h4 class="ui inverted header m-opacity-mini">联系我</h4>
+                    <div class="ui inverted link list">
+                        <a href="#" class="item">邮箱: lianglee17@qq.com</a>
+                        <a href="#" class="item">地址：浙江大学玉泉校区</a>
                     </div>
                 </div>
-                <div class="seven wide column ">
-                    <h4 class="ui inverted header m-opacity-mini ">Liang</h4>
-                    <p class="m-text-thin m-text-spaced m-opacity-mini ">还在建设中....</p>
+                <div class="seven wide column">
+                    <h4 class="ui inverted header m-opacity-mini">Liang</h4>
+                    <p class="m-text-thin m-text-spaced m-opacity-mini">还在建设中....</p>
                 </div>
             </div>
             <div>
-                <div class="ui inverted section divider "></div>
-                <p class="m-text-thin m-font-spacing m-opacity-small ">Copyright ©2022-2023 Liang Designed by Liang</p>
+                <div class="ui inverted section divider"></div>
+                <p class="m-text-thin m-font-spacing m-opacity-small">Copyright ©2022-2023 Liang Designed by Liang</p>
             </div>
         </div>
     </footer>
 
 
-    <script src="https:/cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js "></script>
-    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js "></script>
+    <script src="https:/cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
     <script>
         $('.menu.toggle').click(function() {
             $('.m-item').toggleClass('m-mobile-hide');

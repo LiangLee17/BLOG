@@ -86,8 +86,6 @@ public class BlogController {
         else {
             b = blogService.updateBlog(blog.getId(), blog);
         }
-
-
         if(b == null) {
             attributes.addFlashAttribute("message", "操作失败");
         } else {

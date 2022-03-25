@@ -33,10 +33,12 @@ public class Comment {
 
     @OneToMany(mappedBy = "parentComment")
     private List<Comment> replyComments = new ArrayList<>();
-    
+
     @ManyToOne
     private Comment parentComment;
-    
+
+    private boolean adminComment;
+
     public Comment() {
     }
 
@@ -130,13 +132,26 @@ public class Comment {
     }
 
 
-    @Override
-    public String toString() {
-        return "Comment [avatar=" + avatar + ", content=" + content + ", createTime=" + createTime + ", email=" + email
-                + ", id=" + id + ", nickname=" + nickname + "]";
+    public boolean isAdminComment() {
+        return adminComment;
     }
 
-    
-    
+
+    public void setAdminComment(boolean adminComment) {
+        this.adminComment = adminComment;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Comment [adminComment=" + adminComment + ", avatar=" + avatar + ", blog=" + blog + ", content="
+                + content + ", createTime=" + createTime + ", email=" + email + ", id=" + id + ", nickname=" + nickname
+                + ", parentComment=" + parentComment + ", replyComments=" + replyComments + "]";
+    }
+
+
+
+
+
 
 }
