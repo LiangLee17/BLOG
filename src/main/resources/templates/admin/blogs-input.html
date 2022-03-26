@@ -53,9 +53,9 @@
     <!--中间内容-->
     <div class="m-container m-padded-tb-big">
         <div class="ui container ">
-            <form id="blog-form" action="#" th:object="${blog} " th:action="@{/admin/blogs} " method="post" class="ui form">
+            <form id="blog-form" action="#" th:object="${blog}" th:action="@{/admin/blogs}" method="post" class="ui form">
                 <input type="hidden" name="published">
-                <input type="hidden" name="id " th:value="*{id}">
+                <input type="hidden" name="id" th:value="*{id}">
                 <div class="required field">
                     <div class="ui left labeled input">
                         <div class="ui selection compact teal basic dropdown label">

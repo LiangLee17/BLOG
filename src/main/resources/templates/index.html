@@ -273,13 +273,13 @@
                                     <i class="idea icon"></i>分类
                                 </div>
                                 <div class="column right aligned">
-                                    <a href="#" class="item"><i class="angle double right icon"></i>更多</a>
+                                    <a href="#" th:href="@{/types/{id}(id='-1')}" class="item"><i class="angle double right icon"></i>更多</a>
                                 </div>
                             </div>
                         </div>
                         <div class="ui teal segment">
                             <div class="ui fluid vertical menu">
-                                <a href="#" class="item" th:each="type : ${types}">
+                                <a href="#" th:href="@{/types/{id}(id=${type.id})}" target="_blank" class="item" th:each="type : ${types}">
                                     <span th:text="${type.name}">计算机科学</span>
                                     <div class="ui teal label" th:text="${#arrays.length(type.blogs)}">17</div>
                                 </a>
@@ -318,12 +318,12 @@
                                     <i class="tags icon"></i>标签
                                 </div>
                                 <div class="column right aligned">
-                                    <a href="#" class="item"><i class="angle double right icon"></i>更多</a>
+                                    <a href="#" th:href="@{/tags/{id}(id='-1')}" class="item"><i class="angle double right icon"></i>更多</a>
                                 </div>
                             </div>
                         </div>
                         <div class="ui teal segment">
-                            <a href="#" target="_blank" class="ui teal basic label m-margin-tb-tiny" th:each="tag : ${tags}">
+                            <a href="#" th:href="@{/tags/{id}(id=${tag.id})}" target="_blank" class="ui teal basic label m-margin-tb-tiny" th:each="tag : ${tags}">
                                 <span th:text="${tag.name}">数学</span>
                                 <div class="detail" th:text="${#arrays.length(tag.blogs)}">23</div>
                             </a>

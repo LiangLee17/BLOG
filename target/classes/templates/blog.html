@@ -427,23 +427,26 @@ h5,h6{font-size:1em;}
 
 
                 <!--赞赏-->
-                <div class="ui center aligned basic segment">
-                    <button id="payButton" class="ui red basic circular button">赞赏</button>
-                </div>
-                <div class="ui payQR flowing popup transition hidden">
-                    <div class="ui red basic label ">
-                        <div class="ui images " style="font-size: inherit !important">
-                            <div class="image ">
-                                <img src="../static/image/pay.JPG" th:src="@{/../static/image/pay.JPG}" alt="" class="ui rounded bordered image" style="width: 120px ">
-                                <div>微信</div>
+                <div th:if="${blog.appreciation}">
+                    <div class="ui center aligned basic segment">
+                        <button id="payButton" class="ui red basic circular button">赞赏</button>
+                    </div>
+                    <div class="ui payQR flowing popup transition hidden">
+                        <div class="ui red basic label ">
+                            <div class="ui images " style="font-size: inherit !important">
+                                <div class="image ">
+                                    <img src="../static/image/pay.JPG" th:src="@{/../static/image/pay.JPG}" alt="" class="ui rounded bordered image" style="width: 120px ">
+                                    <div>微信</div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
 
+
             </div>
-            <div class="ui attached positive message">
+            <div class="ui attached positive message" th:if="${blog.shareStatement}">
                 <!--个人信息-->
                 <div class="ui middle aligned grid">
                     <div class="eleven wide column">
@@ -712,7 +715,7 @@ h5,h6{font-size:1em;}
         }
 
 
-        var serurl = "127.0.0.1:8080";
+        var serurl = /*[[#{blog.serurl}]]*/ "127.0.0.1:8080";
         var url = /*[[@{/blog/{id}(id=${blog.id})}]]*/ "";
 
         var qrcode = new QRCode("qrcode", {
