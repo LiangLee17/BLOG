@@ -1,8 +1,6 @@
 spring:
   thymeleaf:
     mode: HTML
-  profiles:
-    active: dev
   mvc:
     static-path-pattern: /static/**
   web:
@@ -10,4 +8,10 @@ spring:
       static-locations: classpath:/static/
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
+    show-sql: true
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://8.130.51.169:3306/blog?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: ll202020cl.

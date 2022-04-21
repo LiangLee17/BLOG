@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:fragment="head(title)">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+    <!-- Semantic CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+    <!-- mark down -->
+    <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.min.css" th:href="@{/lib/editormd/css/editormd.min.css}">
+    <!-- typo -->
+    <link rel="stylesheet" href="../static/css/typo.css" th:href="@{/css/typo.css}">
+    <!-- prism -->
+    <link rel="stylesheet" href="../static/lib/prism/prism.css" th:href="@{/lib/prism/prism.css}">
+    <!-- Customize CSS -->
+    <link rel="stylesheet" href="../static/css/me.css" th:href="@{/css/me.css}">
+    <!--link rel="stylesheet" href="../static/lib/semantic-ui/semantic.css" th:href="@{/lib/semantic-ui/semantic.css}"-->
+    <link rel="stylesheet" href="../static/css/homepage.css" th:href="@{/css/homepage.css}">
+
+    <!--title-->
+    <title th:replace="${title}">fragments</title>
+</head>
+
+<body>
+    <!-- Nav bar-->
+    <nav th:fragment="menu(n)">
+        <div class="ui secondary pointing menu">
+            <a href="#" th:href="@{/}" class="ui logo item">Shell845</a>
+            <a href="#" th:href="@{/}" class="m-item item m-mobile-hide" th:classappend="${n==1} ? 'active'"><i class="fas fa-home"></i>Home</a>
+            <a href="#" th:href="@{/categories/-1}" class="m-item item m-mobile-hide" th:classappend="${n==2} ? 'active'"><i class="fas fa-bookmark"></i> Categories</a>
+            <a href="#" th:href="@{/tags/-1}" class="m-item item m-mobile-hide" th:classappend="${n==3} ? 'active'"><i class="fas fa-tag"></i> Tags</a>
+            <a href="#" th:href="@{/archives}" class="m-item item m-mobile-hide" th:classappend="${n==4} ? 'active'"><i class="fas fa-history"></i> Archives</a>
+            <div class="m-item right item">
+                <form name="search" action="#" method="post" th:action="@{/search}">
+                    <div class="ui icon inverted transparent input">
+                        <input type="text" name="query" placeholder="Search..." th:value="${query}">
+                        <i onclick="document.forms['search'].submit()" class="search link icon"></i>
+                    </div>
+                </form>
+            </div>
+            <!--div class="right m-item item menu-item-search">
+                <form name="search" action="#" th:action="@{/search}" method="post" >
+                    <div class="ui icon inverted transparent input m-margin-tb-tiny">
+                        <input type="text" name="query" placeholder="Search. abc..." th:value="${query}">
+                        <i onclick="document.forms['search'].submit()" class="search link icon"></i>
+                    </div>
+                </form>
+            </div-->
+        </div>
+        <!--a href="#" class="ui menu toggle icon inverted m-top-right button m-mobile-display m-opacity-small">
+          <i class="fas fa-bars m-poolside"></i>
+        </a-->
+    </nav>
+
+    <!--footer-->
+    <footer th:fragment="footer" class="ui inverted vertical segment m-padded-tb-massive">
+        <div class="ui center aligned container">
+            <div class="ui inverted divided stackable grid">
+                <div class="three wide column">
+                    <div class="ui inverted link list">
+                        <div class="item">
+                            <img src="../static/image/WeChat.PNG" class="ui rounded image" alt="" style="width: 117px ">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="three wide column">
+                    <h4 class="ui inverted header m-opacity-mini">最新博客</h4>
+                    <div id="newblog-container">
+                        <div class="ui inverted link list" th:fragment="newblogList">
+                            <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="item" th:each="blog : ${newblogs}" th:text="${blog.title}">测试ing</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="three wide column">
+                    <h4 class="ui inverted header m-opacity-mini">联系我</h4>
+                    <div class="ui inverted link list ">
+                        <a href="mailto:lianglee17@qq.com" class="item" th:text="#{index.email}">邮箱: lianglee17@qq.com</a>
+                        <a href="#" class="item" th:text="#{index.address}">地址：浙江大学玉泉校区</a>
+                    </div>
+                </div>
+                <div class="seven wide column">
+                    <h4 class="ui inverted header m-opacity-mini">Liang</h4>
+                    <p class="m-text-thin m-text-spaced m-opacity-mini">还在建设中....</p>
+                </div>
+            </div>
+            <div>
+                <div class="ui inverted section divider"></div>
+                <p class="m-text-thin m-font-spacing m-opacity-small">Copyright ©2022-2023 Liang Designed by Liang</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <th:block th:fragment="script">
+        <!-- jQuery first-->
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+        <!-- prism -->
+        <script src="../static/lib/prism/prism.js" th:src="@{/lib/prism/prism.js}"></script>
+        <!-- customize -->
+        <!--script src="../static/js/homepage.js" th:src="@{/js/homepage.js}"></script-->
+        <!--script src="../static/lib/semantic-ui/semantic.js" th:src="@{/lib/semantic-ui/semantic.js}"></script-->
+        <script>
+            $('.menu.toggle').click(function() {
+                $('.m-item').toggleClass('m-mobile-hide');
+            });
+
+            $('.ui.dropdown').dropdown({
+                on: 'hover'
+            });
+
+            $('#sponsorButton').popup({
+                popup: $('.sponsorPopup.popup'),
+                on: 'click',
+                position: 'bottom center'
+            });
+        </script>
+    </th:block>
+
+</body>
+
+</html>
